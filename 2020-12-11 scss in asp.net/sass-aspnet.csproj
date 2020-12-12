@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <RootNamespace>sass_aspnet</RootNamespace>
+  </PropertyGroup>
+  <Target Name="ScssToCss" BeforeTargets="Build">
+    <Exec Command="mkdir $(ProjectDir)wwwroot\css" Condition="!Exists('$(ProjectDir)wwwroot\css')" />
+    <Exec Command="sass --sourcemap=none $(ProjectDir)Styles\site.scss $(ProjectDir)wwwroot\css\site.css" />
+  </Target>
+</Project>
