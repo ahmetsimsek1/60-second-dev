@@ -1,0 +1,11 @@
+npm init --yes
+npm install typescript -g
+tsc --init
+npm install is-odd --save
+npm install @types/is-odd --save-dev
+mkdir src
+mkdir js
+
+*** configure package and tsconfig, and add code to project ***
+
+npm start
