@@ -1,0 +1,50 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<form asp-page="People" method=post>
+    <div>
+        <label>First</label>
+        <input name=FirstName />
+    </div>
+    <div>
+        <label>Last</label>
+        <input name=LastName />
+    </div>
+    <div>
+        <input id=save-person type=button value=Submit>
+    </div>
+</form>
+<hr>
+<div id=output>Output goes here</div>
+
+<script>
+
+    // GET AJAX call on page load
+    jQuery(function() {
+        jQuery("#output").html("working...");
+        jQuery.ajax({
+            type: "get",
+            url: "People",
+            dataType: "html"
+        }).done(function(result) {
+            jQuery("#output").html(result);
+        });
+    });
+
+    // POST AJAX call when you click the button
+    jQuery("#save-person").click(function() {
+        jQuery("#output").html("working...");
+        var $form = jQuery(this).closest("form");
+        jQuery.ajax({
+            type: $form.attr("method"),
+            url: $form.attr("action"),
+            data: $form.serialize(),
+            dataType: "html"
+        }).done(function(result) {
+            jQuery("#output").html(result);
+        });
+    });
+</script>

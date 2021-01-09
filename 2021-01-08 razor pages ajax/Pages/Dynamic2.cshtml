@@ -1,0 +1,61 @@
+@page
+@model Dynamic1Model
+
+<div>
+    <label>First</label>
+    <input id=FirstName />
+</div>
+<div>
+    <label>Last</label>
+    <input id=LastName />
+</div>
+<div>
+    <input id=save-person type=button value=Submit>
+</div>
+<hr>
+<div id=output>Output goes here</div>
+
+<form id=post-people-form asp-page="People" method=post></form>
+
+<script>
+
+    // POST AJAX by populating a form
+    jQuery(function() {
+        jQuery("#save-person").click(function() {
+            jQuery("#output").html("working...");
+            var $form = jQuery("#post-people-form");
+            $form.find(":input").each(function() {
+                if (jQuery(this).attr("name") !== "__RequestVerificationToken") {
+                    jQuery(this).remove();
+                }
+            });
+            $form.append(jQuery("<input type=hidden name=FirstName>")
+                .val(jQuery("#FirstName").val()));
+            $form.append(jQuery("<input type=hidden name=LastName>")
+                .val(jQuery("#LastName").val()));
+
+            jQuery.ajax({
+                type: $form.attr("method"),
+                url: $form.attr("action"),
+                data: $form.serialize(),
+                dataType: "html"
+            }).done(function(result) {
+                jQuery("#output").html(result);
+            });
+        });
+    });
+
+
+    // GET AJAX call on page load
+    jQuery(function() {
+        jQuery("#output").html("working...");
+        jQuery.ajax({
+            type: "get",
+            url: "People",
+            dataType: "html"
+        }).done(function(result) {
+            jQuery("#output").html(result);
+        });
+    });
+
+</script>
