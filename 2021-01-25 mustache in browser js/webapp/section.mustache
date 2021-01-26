@@ -1,0 +1,9 @@
+<h3>{{title}}</h3>
+<ul>
+    {{#items}}
+        {{> item}}
+    {{/items}}
+</ul>
+
+{{#showLine}}<hr>{{/showLine}}
+{{^showLine}}not showing line{{/showLine}}
