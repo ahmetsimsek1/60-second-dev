@@ -1,0 +1,16 @@
+﻿@page
+@model IndexModel
+
+@{
+    const string THE_TEXT = @"
+        This is <b>some text</b> 
+        <div>more text</div>
+        <script>alert('danger!');</script> 
+    ";
+}
+
+@* @THE_TEXT *@
+
+@* @Html.Raw(THE_TEXT) *@
+
+@Html.HtmlToText(THE_TEXT)
