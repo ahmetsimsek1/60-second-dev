@@ -1,0 +1,22 @@
+@using Microsoft.AspNetCore.Hosting
+@using Microsoft.Extensions.Hosting
+@inject IWebHostEnvironment env
+
+@{
+    bool isQueryString = Context.Request.Query["verbose"] == "1";
+    bool isDevelopment = env.IsDevelopment();
+}
+
+@if (isQueryString || isDevelopment)
+{
+    <script>
+        console.logVerbose = function () { console.log(...arguments); };
+    </script>
+}
+
+else
+{
+    <script>
+        console.logVerbose = () => { };
+    </script>
+}
