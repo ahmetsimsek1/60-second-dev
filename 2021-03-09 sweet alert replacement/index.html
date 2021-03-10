@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert@2.1.2/dist/sweetalert.min.js"
+        integrity="sha256-KsRuvuRtUVvobe66OFtOQfjP8WA2SzYsmm4VPfMnxms=" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        window.alert = function () {
+            if (arguments == null || !arguments[0]) {
+                swal(" ");
+            } else {
+                swal(arguments[0].toString());
+            }
+        };
+    </script>
+
+    <button onclick="alert('hello there');">click me</button>
+    <button onclick="alert('me again');">click me too</button>
+</body>
+
+</html>
