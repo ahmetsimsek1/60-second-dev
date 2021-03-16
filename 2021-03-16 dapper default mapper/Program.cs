@@ -55,3 +55,5 @@ Console.WriteLine();
 // To do NCHAR(50), set your value to new DbString { Value = "Hello", Length = 50, IsFixedLength = true }
 // To do VARCHAR(50), set your value to new DbString { Value = "Hello", Length = 50, IsAnsi = true }
 // To do CHAR(50), set your value to new DbString { Value = "Hello", Length = 50, IsFixedLength = true, IsAnsi = true }
+
+// To do decimals with a particular precision and scale, use DynamicParameters instead of anonymous types
