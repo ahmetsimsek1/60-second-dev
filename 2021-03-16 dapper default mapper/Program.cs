@@ -36,7 +36,7 @@ foreach (var appliance in appliances)
 // 3: DynamicParameters
 Console.WriteLine();
 var parms = new DynamicParameters();
-parms.Add("@Price", 1000);
+parms.Add("@Price", 1000, DbType.Double);
 appliances = await conn.QueryAsync<Appliance>(@"
     SELECT ApplianceID, ApplianceType, Price, Picture
     FROM Appliances
@@ -50,7 +50,7 @@ foreach (var appliance in appliances)
 
 Console.WriteLine();
 
-// By default, strings are Unicode variable length (NVARCHAR in SQL Server)
+// By default, strings are Unicode variable length (NVARCHAR(4000) in SQL Server)
 // To do NVARCHAR(50), set your value to new DbString { Value = "Hello", Length = 50 }
 // To do NCHAR(50), set your value to new DbString { Value = "Hello", Length = 50, IsFixedLength = true }
 // To do VARCHAR(50), set your value to new DbString { Value = "Hello", Length = 50, IsAnsi = true }
