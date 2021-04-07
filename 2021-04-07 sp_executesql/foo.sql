@@ -19,7 +19,7 @@ DECLARE @PARMS NVARCHAR(MAX) = N'@SomeValue NVARCHAR(100)';
 EXEC sp_executesql @SQL, @PARMS, @SomeValue = 'aaa';
 
 -- inserted successfully
-EXEC sp_executesql @SQL, @PARMS, @SomeValue = 'bbb';
+EXEC sp_executesql @SQL, @PARMS, @SomeValue = 'ddd';
 
 -- inserted successfully as-is, no SQL injection
 EXEC sp_executesql @SQL, @PARMS, @SomeValue = ''');DROP TABLE Foo';
