@@ -1,0 +1,99 @@
+$ deno --version
+deno 1.6.3 (release, x86_64-apple-darwin)
+v8 8.8.294
+typescript 4.1.3
+
+
+$ deno upgrade
+Looking up latest version
+Found latest version 1.9.2
+Checking https://github.com/denoland/deno/releases/download/v1.9.2/deno-x86_64-apple-darwin.zip
+Download has been found
+Deno is upgrading to version 1.9.2
+Archive:  /var/folders/zm/h3n1gtg11j522x9gcc7v268w0000gp/T/.tmpK8d8PT/deno.zip
+  inflating: deno                    
+Upgraded successfully
+
+
+$ deno --version
+deno 1.9.2 (release, x86_64-apple-darwin)
+v8 9.1.269.5
+typescript 4.2.2
+
+
+$ deno upgrade --version 1.6.3
+Checking https://github.com/denoland/deno/releases/download/v1.6.3/deno-x86_64-apple-darwin.zip
+Download has been found
+Deno is upgrading to version 1.6.3
+Archive:  /var/folders/zm/h3n1gtg11j522x9gcc7v268w0000gp/T/.tmpd7S3oa/deno.zip
+  inflating: deno                    
+Upgraded successfully
+
+
+$ deno --version
+deno 1.6.3 (release, x86_64-apple-darwin)
+v8 8.8.294
+typescript 4.1.3
+
+
+$ deno upgrade --canary
+Looking up latest version
+Found latest version aa4eb1c9eccf53e8636a81e6a5b283c0ce7734ef
+Checking https://dl.deno.land/canary/aa4eb1c9eccf53e8636a81e6a5b283c0ce7734ef/deno-x86_64-apple-darwin.zip
+Download has been found
+Deno is upgrading to version aa4eb1c9eccf53e8636a81e6a5b283c0ce7734ef
+Archive:  /var/folders/zm/h3n1gtg11j522x9gcc7v268w0000gp/T/.tmporoOwy/deno.zip
+  inflating: deno                    
+Upgraded successfully
+
+
+$ deno --version
+deno 1.9.2+aa4eb1c (canary, x86_64-apple-darwin)
+v8 9.1.269.5
+typescript 4.2.2
+
+
+$ deno upgrade                                                            
+Looking up latest version
+Found latest version 1.9.2
+Checking https://github.com/denoland/deno/releases/download/v1.9.2/deno-x86_64-apple-darwin.zip
+27.7 MiB / 27.7 MiB (100.0%)
+Deno is upgrading to version 1.9.2
+Archive:  /var/folders/zm/h3n1gtg11j522x9gcc7v268w0000gp/T/.tmprFtPio/deno.zip
+  inflating: deno                    
+Upgraded successfully
+
+
+$ deno upgrade --canary --version=aa4eb1c9eccf53e8636a81e6a5b283c0ce7734ef
+Checking https://dl.deno.land/canary/aa4eb1c9eccf53e8636a81e6a5b283c0ce7734ef/deno-x86_64-apple-darwin.zip
+Download has been found
+Deno is upgrading to version aa4eb1c9eccf53e8636a81e6a5b283c0ce7734ef
+Archive:  /var/folders/zm/h3n1gtg11j522x9gcc7v268w0000gp/T/.tmpYO96FQ/deno.zip
+  inflating: deno                    
+Upgraded successfully
+
+
+$ deno --version
+deno 1.9.2+aa4eb1c (canary, x86_64-apple-darwin)
+v8 9.1.269.5
+typescript 4.2.2
+
+
+$ deno upgrade
+Looking up latest version
+Found latest version 1.9.2
+Checking https://github.com/denoland/deno/releases/download/v1.9.2/deno-x86_64-apple-darwin.zip
+27.7 MiB / 27.7 MiB (100.0%)
+Deno is upgrading to version 1.9.2
+Archive:  /var/folders/zm/h3n1gtg11j522x9gcc7v268w0000gp/T/.tmpM4zwpa/deno.zip
+  inflating: deno                    
+Upgraded successfully
+
+
+$ echo "console.log(Deno.version);" > go.ts
+
+
+$ deno run go.ts
+Check file:///Users/jtenos/go.ts
+{ deno: "1.9.2", v8: "9.1.269.5", typescript: "4.2.2" }
+
