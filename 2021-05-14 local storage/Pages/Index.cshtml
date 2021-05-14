@@ -1,0 +1,56 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+
+<h4>Messages</h4>
+<ul id=messages></ul>
+
+<h4>All local storage</h4>
+<div id=all-local-storage></div>
+
+<h4>Add/Edit entry</h4>
+<div><label>Key:</label><input id=ls-key></div>
+<div><label>Value:</label><input id=ls-value></div>
+<div><button onclick=saveValue()>Save Value</button></div>
+
+<script>
+    function addMessage(msg) {
+        const li = document.createElement("li");
+        li.innerText = msg;
+        document.querySelector("#messages").appendChild(li);
+    }
+
+    function showLocalStorage() {
+        const container = document.querySelector("#all-local-storage");
+        container.innerHTML = "";
+        for (let [ key, value ] of Object.entries(localStorage)) {
+            const div = document.createElement("div");
+            div.innerText = `${key}: ${value}`;
+            container.appendChild(div);
+        }
+    }
+
+    window.addEventListener("storage", e => {
+        addMessage(`Added from other tab: Key: ${e.key}, Old Value: ${e.oldValue}, New Value: ${e.newValue}`);
+        showLocalStorage();
+    });
+    
+    function saveValue() {
+        const key = document.querySelector("#ls-key").value;
+        const newVal = document.querySelector("#ls-value").value;
+        const oldVal = localStorage.getItem(key);
+        if (newVal === "delete-me") {
+            localStorage.removeItem(key);
+            return;
+        }
+        if (oldVal && oldVal !== newVal) {
+            addMessage(`Changing value from ${oldVal} to ${newVal}`);
+        }
+        localStorage.setItem(key, newVal);
+        showLocalStorage();
+    }
+    showLocalStorage();
+</script>
