@@ -1,0 +1,22 @@
+@page
+@model LocalStorageValuesModel
+@using System.Text.Json
+@{
+    Layout = null;
+}
+
+
+@functions
+{
+    public string[] GetCarModels() => new[] {
+        "Chevy", "Ford", "Nissan", "Toyota"
+    };
+    public int[] GetYears() => Enumerable.Range(2015, 10).ToArray();
+}
+
+@Html.Raw(JsonSerializer.Serialize(
+    new {
+        CarModels = GetCarModels(),
+        Years = GetYears()
+    }
+))

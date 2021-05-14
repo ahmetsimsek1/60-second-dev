@@ -4,7 +4,6 @@
     ViewData["Title"] = "Home page";
 }
 
-
 <h4>Messages</h4>
 <ul id=messages></ul>
 
@@ -16,6 +15,7 @@
 <div><label>Value:</label><input id=ls-value></div>
 <div><button onclick=saveValue()>Save Value</button></div>
 
+<div><button onclick=loadDropdownValues()>Load Dropdown Values</button></div>
 <script>
     function addMessage(msg) {
         const li = document.createElement("li");
@@ -44,6 +44,7 @@
         const oldVal = localStorage.getItem(key);
         if (newVal === "delete-me") {
             localStorage.removeItem(key);
+            showLocalStorage();
             return;
         }
         if (oldVal && oldVal !== newVal) {
@@ -53,4 +54,19 @@
         showLocalStorage();
     }
     showLocalStorage();
+    
+    function loadDropdownValues() {
+        if (!localStorage.getItem("CarModels")) {
+            fetch("LocalStorageValues")
+            .then(response => response.json())
+            .then(data => {
+                for (let key in data) {
+                    if (data.hasOwnProperty(key)) {
+                        localStorage.setItem(key, data[key]);
+                    }
+                }
+                showLocalStorage();
+            })
+        }
+    }
 </script>
