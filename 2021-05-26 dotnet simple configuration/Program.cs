@@ -8,7 +8,7 @@ using static System.Console;
 WriteLine();
 IConfiguration config = new ConfigurationBuilder()
     .SetBasePath(Directory.GetCurrentDirectory())
-    .AddJsonFile("appsettings.json")
+    .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
     .Build();
 
 // Simple way to get a string value:
@@ -56,6 +56,12 @@ int complexFirstPersonID = config.GetValue<int>("ComplexObject:PersonIDs:0");
 WriteLine($"complexFirstPersonID={complexFirstPersonID}");
 
 WriteLine();
+
+Write($"Make your change now, then press ENTER: ");
+ReadLine();
+
+complexCity = config["ComplexObject:Location:City"];
+WriteLine($"complexObjectCity={complexCity}");
 
 record CityState(string City, string State)
 {
