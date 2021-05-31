@@ -1,0 +1,27 @@
+﻿@model HomeModel
+@inject IConfiguration _config;
+@inject CityModel _city;
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p>
+        Your favorite animal is a @_config["FavoriteAnimal"]
+    </p>
+    <p>
+        The logger is @Model.Logger.GetType().FullName
+    </p>
+    <p>
+        The car model is @Model.CarModel
+    </p>
+    <p>
+        The game name is @Model.GameName
+    </p>
+    <p>
+        City is @_city.CityName, @_city.StateName
+    </p>
+</div>
+
