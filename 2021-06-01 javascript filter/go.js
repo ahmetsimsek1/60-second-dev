@@ -45,25 +45,25 @@ console.log("");
 // Modify values - the change happens before the iterator gets to it.
 // Modifying the next record, except for the last one
 let arr = [1, 2, 3];
-let newArr = arr.filter((item, idx, arr) => {
-    if (idx != arr.length - 1) {
-        arr[idx + 1] = 10 * arr[idx + 1];
+let newArr = arr.filter((item, idx, a) => {
+    if (idx != a.length - 1) {
+        a[idx + 1] = 10 * a[idx + 1];
     }
     if (idx != 0) {
-        arr[idx - 1] = -1 * arr[idx - 1];
+        a[idx - 1] = -1 * a[idx - 1];
     }
     return true;
 });
 console.log(newArr); // 1, 20, 30
-console.log(arr); // 1, 20, 30
+console.log(arr); // -1, -20, 30
 console.log("");
 
 // Add values - the new item is not included in the iterator:
 // Each of the three items creates a "Hello" at the end, but "Hello" is not
 // executed in the filter
 arr = [1, 2, 3];
-newArr = arr.filter((item, idx, arr) => {
-    arr.push("Hello");
+newArr = arr.filter((item, idx, a) => {
+    a.push("Hello");
     return true;
 });
 console.log(newArr); // 1, 2, 3
@@ -73,8 +73,8 @@ console.log("");
 // Remove values - the removed item is not included in the iterator:
 // Removing the last item in the array
 arr = [1, 2, 3];
-newArr = arr.filter((item, idx, arr) => {
-    arr.pop();
+newArr = arr.filter((item, idx, a) => {
+    a.pop();
     return true;
 });
 
