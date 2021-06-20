@@ -3,3 +3,6 @@
 **/package-lock.json
 2021-04-02 switch expressions/.vscode/tasks.json
 2021-04-02 switch expressions/.vscode/launch.json
+blog-2021-06 indexes/**/bin
+blog-2021-06 indexes/**/obj
+blog-2021-06 indexes/TheDatabase/TheDatabase.sqlproj.user
