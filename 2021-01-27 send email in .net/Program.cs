@@ -36,7 +36,12 @@ msg.Body = bodyBuilder.ToMessageBody();
 // msg.Body = new TextPart(TextFormat.Html) { Text = "<b>Hello</b> world!" };
 
 using var emailClient = new SmtpClient();
+
 await emailClient.ConnectAsync(host, port, useSsl: true).ConfigureAwait(false);
+
+// If you're using non-SSL/TLS, you'd have:
+// await emailClient.ConnectAsync(host, port: 25, options: SecureSocketOptions.None);
+
 await emailClient.AuthenticateAsync(userName, password).ConfigureAwait(false);
 await emailClient.SendAsync(msg).ConfigureAwait(false);
 await emailClient.DisconnectAsync(true).ConfigureAwait(false);
